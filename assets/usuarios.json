@@ -13,6 +13,11 @@
       "id": 3,
       "usuario": "Samuel",
       "clave": "Sam_0931"
+    },
+    {
+      "id": 4,
+      "usuario": "prueba",
+      "clave": "1234"
     }
   ]
   
