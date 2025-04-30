@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:prueba_tecnica/presentation/widgets/card_product.dart';
 import 'package:prueba_tecnica/presentation/widgets/card_publish.dart';
 import '../../providers/products_provider.dart';
@@ -56,10 +57,15 @@ class HomePage extends ConsumerWidget {
                     ),
                     itemBuilder: (_, index) {
                       final product = products[index];
-                      return CardProduct(
-                        title: product.title,
-                        image: product.image,
-                        precio: product.price.toStringAsFixed(2),
+                      return GestureDetector(
+                        onTap: () {
+                          context.go('/details/${product.id}');
+                        },
+                        child: CardProduct(
+                          title: product.title,
+                          image: product.image,
+                          precio: product.price.toStringAsFixed(2),
+                        ),
                       );
                     },
                   ),

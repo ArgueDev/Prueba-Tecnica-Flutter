@@ -19,4 +19,19 @@ class ProductsDatasource {
       throw Exception('Error al obtener los productos: $e');
     }
   }
+
+  Future<ProductResponse> getProductById(int id) async {
+    try {
+      final response = await dio.get('/products/$id');
+      final data = response.data;
+
+      if (data is Map<String, dynamic>) {
+        return ProductResponse.fromJson(data);
+      } else {
+        throw Exception('La respuesta no es un producto válido');
+      }
+    } catch (e) {
+      throw Exception('Error al obtener el producto: $e');
+    }
+  }
 }

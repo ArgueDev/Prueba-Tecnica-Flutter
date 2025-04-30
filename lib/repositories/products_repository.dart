@@ -9,4 +9,8 @@ class ProductsRepository {
   Future<List<ProductResponse>> getAllProducts() {
     return productsDatasource.getAllProducts();
   }
+
+  Future<ProductResponse> getProductById(int id) {
+    return productsDatasource.getProductById(id);
+  }
 }

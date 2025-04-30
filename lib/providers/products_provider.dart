@@ -13,3 +13,9 @@ Future<List<ProductResponse>> products (Ref ref) {
   final products = ref.watch(productsRepositoryProvider);
   return products.getAllProducts();
 }
+
+@riverpod
+Future<ProductResponse> productById (Ref ref, int id) {
+  final productID = ref.watch(productsRepositoryProvider);
+  return productID.getProductById(id);
+}

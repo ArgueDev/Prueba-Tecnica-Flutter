@@ -12,7 +12,11 @@ GoRouter appRouter(Ref ref) {
     initialLocation: '/login',
     routes: [
       GoRoute(path: '/login', builder: (context, state) => LoginPage()),
-      GoRoute(path: '/home', builder: (context, state) => HomePage())
+      GoRoute(path: '/home', builder: (context, state) => HomePage()),
+      GoRoute(path: '/details/:id', builder: (context, state) {
+        final id = int.parse(state.pathParameters['id']!);
+        return ProductDetailsPage(id);
+      }),
     ]
   );
 }
