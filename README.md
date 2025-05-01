@@ -35,7 +35,7 @@ dependencies:
   flutter_riverpod: ^2.6.1
   go_router: ^15.1.1
   riverpod_annotation: ^2.6.1
-
+```
 
 ## 🗂️ Estructura del proyecto
 
