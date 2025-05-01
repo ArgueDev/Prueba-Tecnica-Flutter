@@ -13,10 +13,13 @@ GoRouter appRouter(Ref ref) {
     routes: [
       GoRoute(path: '/login', builder: (context, state) => LoginPage()),
       GoRoute(path: '/home', builder: (context, state) => HomePage()),
-      GoRoute(path: '/details/:id', builder: (context, state) {
-        final id = int.parse(state.pathParameters['id']!);
-        return ProductDetailsPage(id);
-      }),
-    ]
+      GoRoute(path: '/details/:id', builder: (context, state) =>ProductDetailsPage(int.parse(state.pathParameters['id']!))),
+      GoRoute(path: '/add-product', builder: (context, state) => ProductFormPage()),
+      GoRoute(path: '/edit-product/:id', builder: (context, state) {
+          final id = int.parse(state.pathParameters['id']!);
+          return ProductFormPage(id: id);
+        },
+      ),
+    ],
   );
 }

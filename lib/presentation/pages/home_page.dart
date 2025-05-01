@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:prueba_tecnica/presentation/widgets/card_product.dart';
-import 'package:prueba_tecnica/presentation/widgets/card_publish.dart';
-import '../../providers/products_provider.dart';
+
+import '../../providers/providers.dart';
+import '../widgets/widgets.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+
     final products = ref.watch(productsProvider);
+    final localProducts = ref.watch(localProductsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +40,49 @@ class HomePage extends ConsumerWidget {
                 Padding(
                   padding:  EdgeInsets.only(left: 10),
                   child:  Text(
-                    'Productos',
+                    'Productos Locales',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(height: 20),
+                if (localProducts.isEmpty)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text('No hay productos locales'),
+                  )
+                else
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: GridView.builder(
+                      shrinkWrap: true,
+                      physics:  NeverScrollableScrollPhysics(),
+                      itemCount: localProducts.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 30,
+                        mainAxisSpacing: 30,
+                        childAspectRatio: 0.7,
+                      ), 
+                      itemBuilder: (_, index) {
+                        final product = localProducts[index];
+                        return GestureDetector(
+                          onTap: () {
+                            context.go('/details/${product.id}');
+                          },
+                          child: CardProduct(
+                            title: product.title,
+                            image: product.image,
+                            precio: product.price.toStringAsFixed(2),
+                          ),
+                        );
+                      }
+                    )
+                  ),
+                SizedBox(height: 20),
+                Padding(
+                  padding:  EdgeInsets.only(left: 10),
+                  child:  Text(
+                    'Productos FakeStore',
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -75,9 +119,12 @@ class HomePage extends ConsumerWidget {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){},
-        child: Icon(Icons.add)
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: (){
+          context.go('/add-product');
+        },
+        label: Text('Agregar Producto'),
+        icon: Icon(Icons.add),
       ),
     );
   }

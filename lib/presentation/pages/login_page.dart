@@ -1,7 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'dart:convert';
+
 import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
@@ -57,14 +57,14 @@ class LoginPage extends StatelessWidget {
               children: [
                 const Icon(Icons.person, size: 100, color: Colors.white),
                 const SizedBox(height: 40),
-                _buildTextField(
+                _FormText(
                   icon: Icons.person_outline,
                   hint: 'Usuario',
                   obscure: false,
                   controller: usuarioController, 
                 ),
                 const SizedBox(height: 20),
-                _buildTextField(
+                _FormText(
                   icon: Icons.lock_outline,
                   hint: 'Contraseña',
                   obscure: true,
@@ -99,14 +99,23 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildTextField({
-    required IconData icon,
-    required String hint,
-    required bool obscure,
-    required TextEditingController controller,
-  }) {
-    
+class _FormText extends StatelessWidget {
+  final IconData icon;
+  final String hint;
+  final bool obscure;
+  final TextEditingController controller;
+
+  const _FormText({
+    required this.icon, 
+    required this.hint, 
+    required this.obscure, 
+    required this.controller
+  });
+
+  @override
+  Widget build(BuildContext context) {
     return TextField(
       controller: controller,
       obscureText: obscure,

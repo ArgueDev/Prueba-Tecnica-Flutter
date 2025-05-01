@@ -40,17 +40,17 @@ class ProductResponse {
 }
 
 enum Category {
-    ELECTRONICS,
-    JEWELERY,
-    MEN_S_CLOTHING,
-    WOMEN_S_CLOTHING
+    jewelery,
+    mensClothing,
+    womenClothing, 
+    electronics
 }
 
 final categoryValues = EnumValues({
-    "electronics": Category.ELECTRONICS,
-    "jewelery": Category.JEWELERY,
-    "men's clothing": Category.MEN_S_CLOTHING,
-    "women's clothing": Category.WOMEN_S_CLOTHING
+    "electronics": Category.electronics,
+    "jewelery": Category.jewelery,
+    "men's clothing": Category.mensClothing,
+    "women's clothing": Category.womenClothing
 });
 
 class Rating {
