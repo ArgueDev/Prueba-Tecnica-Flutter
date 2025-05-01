@@ -15,6 +15,8 @@ Este proyecto es una aplicación móvil desarrollada en Flutter como parte de un
 - 🗑️ Eliminar productos locales
 - 🔍 Ver detalles de cualquier producto
 
+> ⚠️ La funcionalidad de carrito de compras y generación de factura no fue implementada. Reconozco que no supe cómo abordarla técnicamente en el tiempo disponible
+
 ---
 
 ## 🧰 Tecnologías y paquetes utilizados
