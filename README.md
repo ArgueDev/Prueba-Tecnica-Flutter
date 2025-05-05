@@ -64,7 +64,7 @@ prueba_tecnica/
 
 1. Clona este repositorio
    ```bash
-   git clone https://github.com/ArgueDev/prueba_tecnica.git
+   git clone https://github.com/ArgueDev/Prueba-Tecnica-Flutter.git
    cd prueba_tecnica
    ```
 
